@@ -157,7 +157,7 @@ async def handle_proxy_request(call: CallbackQuery) -> None:
         h = remaining // 3600
         m = (remaining % 3600) // 60
         await call.answer(
-            f"⏳ Следующий запрос доступен через {h} ч {м} мин",
+            f"⏳ Следующий запрос доступен через {h} ч {m} мин",
             show_alert=True,
         )
         return
