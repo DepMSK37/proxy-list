@@ -1,5 +1,4 @@
 import asyncio
-import json
 import time
 from pathlib import Path
 from os import environ
@@ -16,12 +15,9 @@ GITHUB_USER = "DepMSK37"
 GITHUB_REPO = "proxy-list"
 GITHUB_RAW = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/verified"
 
-CACHE_DIR       = Path("cache")
-RATE_LIMIT_FILE = Path("rate_limit.json")
-
-CACHE_TTL     = 4 * 3600
-USER_COOLDOWN = 4 * 3600
-MAX_MSG_LEN   = 4096
+CACHE_DIR   = Path("cache")
+CACHE_TTL   = 4 * 3600
+MAX_MSG_LEN = 4096
 
 REGION_FILES = {
     "eu":  "proxy_eu_verified.txt",
@@ -37,35 +33,6 @@ REGION_LABELS = {
 
 bot = Bot(token=BOT_TOKEN)
 dp  = Dispatcher()
-
-
-def _load_limits() -> dict:
-    if RATE_LIMIT_FILE.exists():
-        try:
-            return json.loads(RATE_LIMIT_FILE.read_text(encoding="utf-8"))
-        except Exception:
-            return {}
-    return {}
-
-
-def _save_limits(data: dict) -> None:
-    RATE_LIMIT_FILE.write_text(json.dumps(data), encoding="utf-8")
-
-
-def check_cooldown(user_id: int) -> int | None:
-    limits = _load_limits()
-    uid = str(user_id)
-    if uid in limits:
-        elapsed = time.time() - limits[uid]
-        if elapsed < USER_COOLDOWN:
-            return int(USER_COOLDOWN - elapsed)
-    return None
-
-
-def set_cooldown(user_id: int) -> None:
-    limits = _load_limits()
-    limits[str(user_id)] = time.time()
-    _save_limits(limits)
 
 
 def _cache_path(region: str) -> Path:
@@ -139,8 +106,7 @@ async def cmd_start(message: Message) -> None:
     await message.answer(
         "👋 <b>MTProto Proxy Bot</b>\n\n"
         "Получай свежие рабочие MTProto-прокси для Telegram.\n"
-        "Каждая ссылка добавляет прокси в один клик прямо из чата.\n\n"
-        "⏱ <i>Лимит: один запрос раз в 4 часа</i>",
+        "Каждая ссылка добавляет прокси в один клик прямо из чата.",
         parse_mode=ParseMode.HTML,
         reply_markup=main_keyboard(),
     )
@@ -148,22 +114,10 @@ async def cmd_start(message: Message) -> None:
 
 @dp.callback_query(F.data.in_({"proxy_eu", "proxy_ru", "proxy_all"}))
 async def handle_proxy_request(call: CallbackQuery) -> None:
-    region  = call.data.removeprefix("proxy_")
-    user_id = call.from_user.id
-    label   = REGION_LABELS[region]
-
-    remaining = check_cooldown(user_id)
-    if remaining is not None:
-        h = remaining // 3600
-        m = (remaining % 3600) // 60
-        await call.answer(
-            f"⏳ Следующий запрос доступен через {h} ч {m} мин",
-            show_alert=True,
-        )
-        return
+    region = call.data.removeprefix("proxy_")
+    label  = REGION_LABELS[region]
 
     await call.answer()
-    set_cooldown(user_id)
 
     proxies = await asyncio.get_event_loop().run_in_executor(
         None, get_proxy_lines, region
