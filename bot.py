@@ -1,6 +1,5 @@
 import asyncio
 import json
-import os
 import time
 from pathlib import Path
 from os import environ
@@ -10,10 +9,8 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters import CommandStart
 from aiogram.enums import ParseMode
-from aiogram.client.session.aiohttp import AiohttpSession
 
 BOT_TOKEN = environ["BOT_TOKEN"]
-BOT_PROXY = environ["BOT_PROXY"]
 
 GITHUB_USER = "DepMSK37"
 GITHUB_REPO = "proxy-list"
@@ -38,8 +35,7 @@ REGION_LABELS = {
     "all": "🌐 Все регионы",
 }
 
-session = AiohttpSession(proxy=BOT_PROXY)
-bot = Bot(token=BOT_TOKEN, session=session)
+bot = Bot(token=BOT_TOKEN)
 dp  = Dispatcher()
 
 
@@ -161,7 +157,7 @@ async def handle_proxy_request(call: CallbackQuery) -> None:
         h = remaining // 3600
         m = (remaining % 3600) // 60
         await call.answer(
-            f"⏳ Следующий запрос доступен через {h} ч {m} мин",
+            f"⏳ Следующий запрос доступен через {h} ч {м} мин",
             show_alert=True,
         )
         return
@@ -189,11 +185,10 @@ async def _send_proxies(
     proxies: list[str],
     label: str,
 ) -> None:
-    count  = len(proxies)
     chunks = split_by_length(proxies)
 
     await message.answer(
-        f"{label} прокси — <b>{count} шт.</b>\n"
+        f"{label} прокси — <b>{len(proxies)} шт.</b>\n"
         f"Нажми на ссылку → прокси добавится в Telegram автоматически 👇",
         parse_mode=ParseMode.HTML,
     )
