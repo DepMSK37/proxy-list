@@ -10,6 +10,8 @@ from aiogram.filters import CommandStart
 from aiogram.enums import ParseMode
 
 BOT_TOKEN = environ["BOT_TOKEN"]
+# Укажите ваш Telegram ID в переменных окружения или захардкодьте здесь:
+ADMIN_ID = int(environ.get("ADMIN_ID", 0))
 
 GITHUB_USER = "DepMSK37"
 GITHUB_REPO = "proxy-list"
@@ -89,8 +91,8 @@ def split_by_length(lines: list[str], max_len: int = MAX_MSG_LEN) -> list[str]:
     return chunks
 
 
-def main_keyboard() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(inline_keyboard=[
+def main_keyboard(user_id: int) -> InlineKeyboardMarkup:
+    buttons = [
         [
             InlineKeyboardButton(text="🌍 EU прокси",  callback_data="proxy_eu"),
             InlineKeyboardButton(text="🇷🇺 RU прокси", callback_data="proxy_ru"),
@@ -98,7 +100,15 @@ def main_keyboard() -> InlineKeyboardMarkup:
         [
             InlineKeyboardButton(text="🌐 Все прокси", callback_data="proxy_all"),
         ],
-    ])
+    ]
+    
+    # Добавляем кнопку администратора
+    if user_id == ADMIN_ID:
+        buttons.append([
+            InlineKeyboardButton(text="🧹 Очистить кэш (Админ)", callback_data="admin_clearcache")
+        ])
+        
+    return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
 @dp.message(CommandStart())
@@ -108,7 +118,7 @@ async def cmd_start(message: Message) -> None:
         "Получай свежие рабочие MTProto-прокси для Telegram.\n"
         "Каждая ссылка добавляет прокси в один клик прямо из чата.",
         parse_mode=ParseMode.HTML,
-        reply_markup=main_keyboard(),
+        reply_markup=main_keyboard(message.from_user.id),
     )
 
 
@@ -127,7 +137,7 @@ async def handle_proxy_request(call: CallbackQuery) -> None:
         await call.message.answer(
             "😔 Список пока пуст — база ещё не загружена с GitHub.\n"
             "Попробуй через несколько минут.",
-            reply_markup=main_keyboard(),
+            reply_markup=main_keyboard(call.from_user.id),
         )
         return
 
@@ -152,8 +162,23 @@ async def _send_proxies(
 
     await message.answer(
         "✅ Готово! Если прокси не работает — попробуй следующий.",
-        reply_markup=main_keyboard(),
+        reply_markup=main_keyboard(message.chat.id),
     )
+
+import shutil
+
+@dp.callback_query(F.data == "admin_clearcache")
+async def handle_clearcache(call: CallbackQuery) -> None:
+    if call.from_user.id != ADMIN_ID:
+        await call.answer("❌ Нет прав!", show_alert=True)
+        return
+
+    if CACHE_DIR.exists():
+        shutil.rmtree(CACHE_DIR)
+        CACHE_DIR.mkdir(exist_ok=True)
+        await call.answer("✅ Кэш успешно очищен!", show_alert=True)
+    else:
+        await call.answer("⚠️ Кэш и так пуст.", show_alert=True)
 
 
 async def main() -> None:
