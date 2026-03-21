@@ -1,18 +1,7 @@
 @echo off
-chcp 65001 > nul
-cd /d "%~dp0"
-
-echo [%date% %time%] Запуск парсера...
-python main.py
-
-if %errorlevel% neq 0 (
-    echo [%date% %time%] ОШИБКА: main.py завершился с ошибкой
-    exit /b 1
-)
-
-echo [%date% %time%] Пушим на GitHub...
-git add verified/
-git commit -m "update proxies %date% %time%"
-git push
-
-echo [%date% %time%] Готово!
+cd /d "C:\Users\BYBIT\OneDrive\Desktop\telegram-proxy-collector-main2"
+"C:\Python314\python.exe" main.py
+if %errorlevel% neq 0 exit /b 1
+"C:\Program Files\Git\cmd\git.exe" add verified/
+"C:\Program Files\Git\cmd\git.exe" commit -m "update"
+"C:\Program Files\Git\cmd\git.exe" push
