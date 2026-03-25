@@ -1,0 +1,5 @@
+*.session
+*.pyc
+__pycache__/
+.env
+auth_telethon.py
