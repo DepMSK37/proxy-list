@@ -1,6 +1,7 @@
 import requests
 import re
 import socket
+import struct
 import concurrent.futures
 import time
 from datetime import datetime
@@ -11,6 +12,13 @@ import argparse
 import asyncio
 
 try:
+    from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+    CRYPTO_AVAILABLE = True
+except ImportError:
+    CRYPTO_AVAILABLE = False
+    print("⚠️  cryptography не установлен. Используется TCP ping (pip install cryptography для MTProto-RAW)")
+
+try:
     from telethon import TelegramClient
     from telethon.connection import ConnectionTcpMTProxyRandomizedIntermediate
     TELETHON_AVAILABLE = True
@@ -19,8 +27,8 @@ except ImportError:
     print("⚠️  Telethon не установлен. Используется TCP ping (pip install telethon для MTProto)")
 
 # API ключи для Telethon (получи на my.telegram.org)
-API_ID   = None  # Вставь свой api_id
-API_HASH = None  # Вставь свой api_hash
+API_ID   = 34790560
+API_HASH = "225525bde9d579260411ee09cd1ee5a6"
 
 SOURCES = [
     "https://raw.githubusercontent.com/SoliSpirit/mtproto/master/all_proxies.txt",
@@ -183,8 +191,10 @@ async def check_proxy_telethon(p: tuple) -> dict | None:
     if _is_blocked(secret, domain):
         return None
 
+    SESSION_NAME = "proxy_checker"  # создаётся через auth_telethon.py
+
     client = TelegramClient(
-        f'test_{host.replace(".", "_")}_{port}', API_ID, API_HASH,
+        SESSION_NAME, API_ID, API_HASH,
         connection=ConnectionTcpMTProxyRandomizedIntermediate,
         proxy=(host, int(port), secret),
         timeout=8.0,
@@ -192,6 +202,9 @@ async def check_proxy_telethon(p: tuple) -> dict | None:
     try:
         start = time.time()
         await client.connect()
+        if not await client.is_user_authorized():
+            # Сессия не создана — запусти auth_telethon.py один раз вручную
+            return None
         await client.get_config()
         ping = round(time.time() - start, 3)
         return {
@@ -203,12 +216,12 @@ async def check_proxy_telethon(p: tuple) -> dict | None:
     except Exception:
         return None
     finally:
-        # ИСПРАВЛЕНО: finally гарантирует disconnect и очистку сессии
         try:
             await client.disconnect()
         except Exception:
             pass
-        _cleanup_telethon_session(host, port)
+        # Сессию НЕ удаляем — она общая для всех прокси
+
 
 
 def check_proxy_tcp(p: tuple) -> dict | None:
@@ -234,6 +247,77 @@ def check_proxy_tcp(p: tuple) -> dict | None:
         'ping': ping, 'region': _detect_region(domain),
         'domain': domain or '', 'method': 'TCP_OK',
     }
+
+
+def check_proxy_mtproto_raw(p: tuple) -> dict | None:
+    """
+    MTProto-пинг БЕЗ API ключей (как Telegram).
+    Выполняет настоящее MTProto obfuscated2 рукопожатие.
+    Для fake-TLS (dd-секрет) — fallback на TCP.
+    """
+    if not CRYPTO_AVAILABLE:
+        return check_proxy_tcp(p)
+
+    host, port, secret = p
+    domain = decode_domain(secret)
+
+    if _is_blocked(secret, domain):
+        return None
+
+    # fake-TLS секрет (dd) требует TLS-рукопожатия — используем TCP
+    if secret.lower().startswith('dd'):
+        result = check_proxy_tcp(p)
+        if result:
+            result['method'] = 'TCP_fakeTLS'
+        return result
+
+    try:
+        # Генерируем 64-байтовый init-пакет для obfuscated2
+        FORBIDDEN_FIRST = {0xef, 0x44, 0x54, 0x48, 0x50, 0x47, 0x65, 0x16, 0xee}
+        FORBIDDEN_U32   = {0x44414548, 0x54534f50, 0x20544547, 0x4954504f,
+                           0xdddddddd, 0xeeeeeeee, 0x02010316}
+        for _ in range(100):
+            data = bytearray(os.urandom(64))
+            if data[0] in FORBIDDEN_FIRST:
+                continue
+            if struct.unpack('<I', bytes(data[0:4]))[0] in FORBIDDEN_U32:
+                continue
+            break
+
+        # Intermediate protocol magic
+        data[56] = 0xee
+        data[57] = 0xee
+        data[58] = 0xee
+        data[59] = 0xee
+
+        key = bytes(data[8:40])   # 32 bytes — AES key
+        iv  = bytes(data[40:56])  # 16 bytes — AES IV/counter
+
+        # AES-256-CTR шифруем весь пакет, подменяем байты 56..64
+        cipher    = Cipher(algorithms.AES(key), modes.CTR(iv))
+        encryptor = cipher.encryptor()
+        encrypted = encryptor.update(bytes(data))
+        data[56:64] = encrypted[56:64]
+
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(TIMEOUT)
+            start = time.time()
+            s.connect((host, port))
+            s.sendall(bytes(data))
+            # Ждём ответа от прокси (хотя бы 1 байт)
+            s.settimeout(TIMEOUT)
+            resp = s.recv(4)
+            ping = round(time.time() - start, 3)
+            if resp:  # прокси ответил — рабочий
+                return {
+                    'host': host, 'port': port, 'secret': secret,
+                    'link': f'tg://proxy?server={host}&port={port}&secret={secret}',
+                    'ping': ping, 'region': _detect_region(domain),
+                    'domain': domain or '', 'method': 'MTProto_RAW',
+                }
+    except Exception:
+        pass
+    return None
 
 
 # ─────────────────────────── postprocess ────────────────────────
@@ -304,9 +388,14 @@ async def main_async(args: argparse.Namespace) -> None:
                 print(f'  [{checked}/{total}] {checked / total * 100:.0f}% | найдено: {len(valid)}')
 
     else:
-        print('📡 Режим: TCP ping\n')
+        if CRYPTO_AVAILABLE:
+            print('📡 Режим: MTProto RAW ping (как Telegram, без API ключей)\n')
+            checker = check_proxy_mtproto_raw
+        else:
+            print('📡 Режим: TCP ping\n')
+            checker = check_proxy_tcp
         with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as exc:
-            futures = {exc.submit(check_proxy_tcp, p): p for p in all_raw}
+            futures = {exc.submit(checker, p): p for p in all_raw}
             for f in concurrent.futures.as_completed(futures):
                 result = f.result()
                 checked += 1
