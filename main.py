@@ -11,6 +11,15 @@ import glob
 import argparse
 import asyncio
 
+# Простой загрузчик .env
+if os.path.exists('.env'):
+    with open('.env', encoding='utf-8') as f:
+        for line in f:
+            if '=' in line and not line.startswith('#'):
+                k, v = line.strip().split('=', 1)
+                os.environ[k] = v
+
+
 try:
     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
     CRYPTO_AVAILABLE = True
@@ -26,9 +35,9 @@ except ImportError:
     TELETHON_AVAILABLE = False
     print("⚠️  Telethon не установлен. Используется TCP ping (pip install telethon для MTProto)")
 
-# API ключи для Telethon (получи на my.telegram.org)
-API_ID   = None  # API_ID (KEEP PRIVATE)
-API_HASH = None  # API_HASH (KEEP PRIVATE)
+# API ключи для Telethon (тянутся из .env)
+API_ID   = int(os.environ.get('TELEGRAM_API_ID', 0)) or None
+API_HASH = os.environ.get('TELEGRAM_API_HASH')
 
 SOURCES = [
     "https://raw.githubusercontent.com/SoliSpirit/mtproto/master/all_proxies.txt",
