@@ -1,3 +1,6 @@
-# Verified RU Proxies (0)
-# Updated: 2026-04-02 18:00:32 UTC
+# Verified RU Proxies (1)
+# Updated: 2026-04-03 18:00:23 UTC
+# Method: MTProto_RAW
+# Best ping: 0.334s
 
+tg://proxy?server=FAST.tgsecurity.online&port=443&secret=ee7c5d4e1f2a3b9c8d7e6f5a4b3c2d1e0f766b2e636f6d
