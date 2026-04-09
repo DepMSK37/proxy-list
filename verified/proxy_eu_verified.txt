@@ -1,26 +1,24 @@
-# Verified EU Proxies (21)
-# Updated: 2026-04-08 18:00:27 UTC
+# Verified EU Proxies (19)
+# Updated: 2026-04-09 18:01:07 UTC
 # Method: TCP_fakeTLS
-# Best ping: 0.034s
+# Best ping: 0.026s
 
 tg://proxy?server=172.65.102.115&port=22&secret=dd79e344818749bd7ac519130220c25d09
 tg://proxy?server=172.65.117.172&port=22&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=2A.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=how.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=own.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=zoomit.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=37.46.211.176&port=3019&secret=dd9944774a88592e735e70ed9f3096af5c
-tg://proxy?server=195.254.165.249&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=195.254.165.253&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=195.254.165.252&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=78.47.67.183&port=8443&secret=dd104462821249bd7ac519130220c25d09
+tg://proxy?server=5.75.218.189&port=8443&secret=dd104462821249bd7ac519130220c25d09
 tg://proxy?server=3.hajrozbeh.onl&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=195.254.165.250&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=2A.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=195.254.165.252&port=25565&secret=dd79e344818749bd7ac519130220c25d09
 tg://proxy?server=195.254.165.247&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=27289292.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=6161627.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=i.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=173.249.36.34&port=443&secret=ee13012cfc85c1d5d1e970636d6fe5b542636c6f7564666c6172652e636f6d
 tg://proxy?server=rkn.tg&port=1337&secret=dda2d3fa639a6ddcf8d6d1c5913d001531
-tg://proxy?server=mtproto.eu&port=443&secret=eebd22cd34081c9420e8515a153186e63273647a74656c65636f6d2e726f
 tg://proxy?server=195.254.165.251&port=25565&secret=dd79e344818749bd7ac519130220c25d09
-tg://proxy?server=tumanpro.krotmonstr.online&port=443&secret=eeddffec89f799a1ab3cf8b40806c74d927777772e676f6f676c652e636f6d
+tg://proxy?server=195.254.165.249&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=195.254.165.250&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=6161627.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=195.254.165.253&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=zoomit.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=how.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=27289292.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=i.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
+tg://proxy?server=own.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09
