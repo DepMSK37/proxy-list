@@ -1,6 +1,3 @@
-# Verified RU Proxies (1)
-# Updated: 2026-04-18 18:00:20 UTC
-# Method: MTProto_RAW
-# Best ping: 0.327s
+# Verified RU Proxies (0)
+# Updated: 2026-04-19 18:00:20 UTC
 
-tg://proxy?server=bezobhoda.freeon.name&port=8443&secret=eeed1a5a7f339b8ff9840d52df123829706164732e78352e7275
