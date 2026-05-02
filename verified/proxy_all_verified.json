@@ -1,20 +1,10 @@
 [
   {
-    "host": "27289292.telbet.lol",
+    "host": "6161627.telbet.lol",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
-    "link": "tg://proxy?server=27289292.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
-    "ping": 0.126,
-    "region": "eu",
-    "domain": "",
-    "method": "TCP_fakeTLS"
-  },
-  {
-    "host": "3.hajrozbeh.onl",
-    "port": 25565,
-    "secret": "dd79e344818749bd7ac519130220c25d09",
-    "link": "tg://proxy?server=3.hajrozbeh.onl&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
-    "ping": 0.311,
+    "link": "tg://proxy?server=6161627.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
+    "ping": 0.13,
     "region": "eu",
     "domain": "",
     "method": "TCP_fakeTLS"
@@ -24,7 +14,47 @@
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "link": "tg://proxy?server=how.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
-    "ping": 0.325,
+    "ping": 0.146,
+    "region": "eu",
+    "domain": "",
+    "method": "TCP_fakeTLS"
+  },
+  {
+    "host": "94.159.106.120",
+    "port": 443,
+    "secret": "ee094c74b28fa0195c624b646de6a9f04f7777772e636c6f7564666c6172652e636f6d",
+    "link": "tg://proxy?server=94.159.106.120&port=443&secret=ee094c74b28fa0195c624b646de6a9f04f7777772e636c6f7564666c6172652e636f6d",
+    "ping": 0.172,
+    "region": "eu",
+    "domain": "lt\\bkdmowww.cloudflare.com",
+    "method": "MTProto_RAW"
+  },
+  {
+    "host": "own.telbet.lol",
+    "port": 25565,
+    "secret": "dd79e344818749bd7ac519130220c25d09",
+    "link": "tg://proxy?server=own.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
+    "ping": 0.187,
+    "region": "eu",
+    "domain": "",
+    "method": "TCP_fakeTLS"
+  },
+  {
+    "host": "2A.telbet.lol",
+    "port": 25565,
+    "secret": "dd79e344818749bd7ac519130220c25d09",
+    "link": "tg://proxy?server=2A.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
+    "ping": 0.202,
+    "region": "eu",
+    "domain": "",
+    "method": "TCP_fakeTLS"
+  },
+  {
+    "host": "3.hajrozbeh.onl",
+    "port": 25565,
+    "secret": "dd79e344818749bd7ac519130220c25d09",
+    "link": "tg://proxy?server=3.hajrozbeh.onl&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
+    "ping": 0.2,
     "region": "eu",
     "domain": "",
     "method": "TCP_fakeTLS"
@@ -34,59 +64,69 @@
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "link": "tg://proxy?server=i.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
-    "ping": 0.336,
+    "ping": 0.232,
     "region": "eu",
     "domain": "",
     "method": "TCP_fakeTLS"
   },
   {
-    "host": "w7.ewe.chillmybabe.ru",
-    "port": 8443,
-    "secret": "7jT7CJulnbpYHPMdOJZhYLZ3d3cud2lsZGJlcnJpZXMucnU",
-    "link": "tg://proxy?server=w7.ewe.chillmybabe.ru&port=8443&secret=7jT7CJulnbpYHPMdOJZhYLZ3d3cud2lsZGJlcnJpZXMucnU",
-    "ping": 0.404,
+    "host": "who-are-you.top",
+    "port": 853,
+    "secret": "ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b",
+    "link": "tg://proxy?server=who-are-you.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b",
+    "ping": 0.244,
     "region": "eu",
-    "domain": "",
+    "domain": "t3f)}+mt.akenai.click",
     "method": "MTProto_RAW"
   },
   {
-    "host": "2A.telbet.lol",
+    "host": "27289292.telbet.lol",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
-    "link": "tg://proxy?server=2A.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
-    "ping": 0.097,
+    "link": "tg://proxy?server=27289292.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
+    "ping": 0.347,
     "region": "eu",
     "domain": "",
     "method": "TCP_fakeTLS"
   },
   {
-    "host": "6161627.telbet.lol",
-    "port": 25565,
-    "secret": "dd79e344818749bd7ac519130220c25d09",
-    "link": "tg://proxy?server=6161627.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
-    "ping": 0.075,
-    "region": "eu",
-    "domain": "",
-    "method": "TCP_fakeTLS"
+    "host": "89.125.113.11",
+    "port": 443,
+    "secret": "eebcb694130943ff7dcaf08c93b0564ff179616e6465782e7275",
+    "link": "tg://proxy?server=89.125.113.11&port=443&secret=eebcb694130943ff7dcaf08c93b0564ff179616e6465782e7275",
+    "ping": 0.356,
+    "region": "ru",
+    "domain": "c}voyandex.ru",
+    "method": "MTProto_RAW"
   },
   {
     "host": "zoomit.telbet.lol",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "link": "tg://proxy?server=zoomit.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
-    "ping": 0.062,
+    "ping": 0.36,
     "region": "eu",
     "domain": "",
     "method": "TCP_fakeTLS"
   },
   {
-    "host": "own.telbet.lol",
-    "port": 25565,
-    "secret": "dd79e344818749bd7ac519130220c25d09",
-    "link": "tg://proxy?server=own.telbet.lol&port=25565&secret=dd79e344818749bd7ac519130220c25d09",
-    "ping": 0.061,
-    "region": "eu",
-    "domain": "",
-    "method": "TCP_fakeTLS"
+    "host": "tproxyru.live.",
+    "port": 8980,
+    "secret": "ee104462821249bd7ac519130220c25d09617669746f2e7275",
+    "link": "tg://proxy?server=tproxyru.live.&port=8980&secret=ee104462821249bd7ac519130220c25d09617669746f2e7275",
+    "ping": 0.799,
+    "region": "ru",
+    "domain": "dbiz ]avito.ru",
+    "method": "MTProto_RAW"
+  },
+  {
+    "host": "89.125.113.10",
+    "port": 443,
+    "secret": "ee700a15adb4cca8106fe1e0ad0dd35ce879616e6465782e7275",
+    "link": "tg://proxy?server=89.125.113.10&port=443&secret=ee700a15adb4cca8106fe1e0ad0dd35ce879616e6465782e7275",
+    "ping": 1.215,
+    "region": "ru",
+    "domain": "po\\yandex.ru",
+    "method": "MTProto_RAW"
   }
 ]
