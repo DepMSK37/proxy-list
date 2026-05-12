@@ -1,22 +1,12 @@
 [
   {
-    "host": "132.243.235.190",
+    "host": "111.88.156.136",
     "port": 443,
-    "secret": "ee157938a8c2f93afd4880d5bc6a1c8da279616e6465782e7275",
-    "link": "tg://proxy?server=132.243.235.190&port=443&secret=ee157938a8c2f93afd4880d5bc6a1c8da279616e6465782e7275",
-    "ping": 0.446,
-    "region": "ru",
-    "domain": "y8:hjyandex.ru",
-    "method": "MTProto_RAW"
-  },
-  {
-    "host": "132.243.235.189",
-    "port": 443,
-    "secret": "ee580a561631a7217d4a0607bb2be8930e79616e6465782e7275",
-    "link": "tg://proxy?server=132.243.235.189&port=443&secret=ee580a561631a7217d4a0607bb2be8930e79616e6465782e7275",
-    "ping": 0.898,
-    "region": "ru",
-    "domain": "xv1!}j+yandex.ru",
-    "method": "MTProto_RAW"
+    "secret": "dd8e8284414d21cdc5575cf17d59c5307e",
+    "link": "tg://proxy?server=111.88.156.136&port=443&secret=dd8e8284414d21cdc5575cf17d59c5307e",
+    "ping": 0.044,
+    "region": "eu",
+    "domain": "",
+    "method": "TCP_fakeTLS"
   }
 ]
