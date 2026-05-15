@@ -1,6 +1,7 @@
-# Verified EU Proxies (1)
-# Updated: 2026-05-12 18:00:55 UTC
-# Method: TCP_fakeTLS
-# Best ping: 0.044s
+# Verified EU Proxies (2)
+# Updated: 2026-05-15 18:00:19 UTC
+# Method: MTProto_RAW
+# Best ping: 0.425s
 
-tg://proxy?server=111.88.156.136&port=443&secret=dd8e8284414d21cdc5575cf17d59c5307e
+tg://proxy?server=win.sosproxy.space&port=443&secret=ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d
+tg://proxy?server=vfast.proxytg.space&port=443&secret=ee4b3ce8c172e8a23ff5f953069ef6c38a64726976652e676f6f676c652e636f6d
