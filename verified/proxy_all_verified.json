@@ -1,12 +1,12 @@
 [
   {
-    "host": "tproxyru.live.",
-    "port": 8980,
-    "secret": "ee104462821249bd7ac519130220c25d09617669746f2e7275",
-    "link": "tg://proxy?server=tproxyru.live.&port=8980&secret=ee104462821249bd7ac519130220c25d09617669746f2e7275",
-    "ping": 0.334,
+    "host": "104.253.43.74",
+    "port": 443,
+    "secret": "ee05e177309b81b87d379e9f454c49374f79616e6465782e7275",
+    "link": "tg://proxy?server=104.253.43.74&port=443&secret=ee05e177309b81b87d379e9f454c49374f79616e6465782e7275",
+    "ping": 0.224,
     "region": "ru",
-    "domain": "dbiz ]avito.ru",
+    "domain": "w0}7eli7oyandex.ru",
     "method": "MTProto_RAW"
   },
   {
@@ -14,19 +14,29 @@
     "port": 443,
     "secret": "ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d",
     "link": "tg://proxy?server=win.sosproxy.space&port=443&secret=ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d",
-    "ping": 0.425,
+    "ping": 0.514,
     "region": "eu",
     "domain": "g|j(:.q1drive.google.com",
     "method": "MTProto_RAW"
   },
   {
-    "host": "vfast.proxytg.space",
+    "host": "s1.proxytg.space",
     "port": 443,
-    "secret": "ee4b3ce8c172e8a23ff5f953069ef6c38a64726976652e676f6f676c652e636f6d",
-    "link": "tg://proxy?server=vfast.proxytg.space&port=443&secret=ee4b3ce8c172e8a23ff5f953069ef6c38a64726976652e676f6f676c652e636f6d",
-    "ping": 0.516,
+    "secret": "ee481fc4aa7c63d939142d4dbf07e1aac464726976652e676f6f676c652e636f6d",
+    "link": "tg://proxy?server=s1.proxytg.space&port=443&secret=ee481fc4aa7c63d939142d4dbf07e1aac464726976652e676f6f676c652e636f6d",
+    "ping": 0.313,
     "region": "eu",
-    "domain": "k<r?sdrive.google.com",
+    "domain": "h|c9-mdrive.google.com",
+    "method": "MTProto_RAW"
+  },
+  {
+    "host": "ethereal.arixo.shop",
+    "port": 443,
+    "secret": "eed9fd89062ab62abcbf1bd82dfe914004617669746f2e7275",
+    "link": "tg://proxy?server=ethereal.arixo.shop&port=443&secret=eed9fd89062ab62abcbf1bd82dfe914004617669746f2e7275",
+    "ping": 1.873,
+    "region": "ru",
+    "domain": "**-@avito.ru",
     "method": "MTProto_RAW"
   }
 ]
