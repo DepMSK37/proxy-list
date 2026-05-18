@@ -1,7 +1,3 @@
-# Verified Proxies t.me format (4)
-# Updated: 2026-05-16 18:00:36 UTC
+# Verified Proxies t.me format (0)
+# Updated: 2026-05-18 18:00:21 UTC
 
-https://t.me/proxy?server=104.253.43.74&port=443&secret=ee05e177309b81b87d379e9f454c49374f79616e6465782e7275
-https://t.me/proxy?server=win.sosproxy.space&port=443&secret=ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d
-https://t.me/proxy?server=s1.proxytg.space&port=443&secret=ee481fc4aa7c63d939142d4dbf07e1aac464726976652e676f6f676c652e636f6d
-https://t.me/proxy?server=ethereal.arixo.shop&port=443&secret=eed9fd89062ab62abcbf1bd82dfe914004617669746f2e7275
