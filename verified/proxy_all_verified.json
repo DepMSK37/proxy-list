@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "host": "ak.yourline.online",
+    "port": 443,
+    "secret": "eed74b20f8b196edebcfdc6de8c8985d60616b2e796f75726c696e652e6f6e6c696e65",
+    "link": "tg://proxy?server=ak.yourline.online&port=443&secret=eed74b20f8b196edebcfdc6de8c8985d60616b2e796f75726c696e652e6f6e6c696e65",
+    "ping": 0.324,
+    "region": "eu",
+    "domain": "k m]`ak.yourline.online",
+    "method": "MTProto_RAW"
+  },
+  {
+    "host": "hl.routefastnet.online",
+    "port": 443,
+    "secret": "eea9a5f5674069d982088b5ad27dca4584686c2e726f757465666173746e65742e6f6e6c696e65",
+    "link": "tg://proxy?server=hl.routefastnet.online&port=443&secret=eea9a5f5674069d982088b5ad27dca4584686c2e726f757465666173746e65742e6f6e6c696e65",
+    "ping": 0.374,
+    "region": "eu",
+    "domain": "g@iz}ehl.routefastnet.online",
+    "method": "MTProto_RAW"
+  },
+  {
+    "host": "103.110.64.213",
+    "port": 443,
+    "secret": "eecb034302623216896e2887011d848d6479616e6465782e7275",
+    "link": "tg://proxy?server=103.110.64.213&port=443&secret=eecb034302623216896e2887011d848d6479616e6465782e7275",
+    "ping": 1.855,
+    "region": "ru",
+    "domain": "cb2n(dyandex.ru",
+    "method": "MTProto_RAW"
+  }
+]

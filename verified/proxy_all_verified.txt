@@ -1,3 +1,8 @@
-# Verified All Proxies (0)
-# Updated: 2026-05-18 18:00:21 UTC
+# Verified All Proxies (3)
+# Updated: 2026-05-20 18:00:24 UTC
+# Method: MTProto_RAW
+# Best ping: 0.324s
 
+tg://proxy?server=ak.yourline.online&port=443&secret=eed74b20f8b196edebcfdc6de8c8985d60616b2e796f75726c696e652e6f6e6c696e65
+tg://proxy?server=hl.routefastnet.online&port=443&secret=eea9a5f5674069d982088b5ad27dca4584686c2e726f757465666173746e65742e6f6e6c696e65
+tg://proxy?server=103.110.64.213&port=443&secret=eecb034302623216896e2887011d848d6479616e6465782e7275
